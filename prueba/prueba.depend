@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1692224645 source:d:\educacion\2do\segundo cuatrimentre\eda\labs\prueba\main.c
+	<stdio.h>
+	<stdlib.h>
+	"envios.h"
+
+1692224645 d:\educacion\2do\segundo cuatrimentre\eda\labs\prueba\envios.h
+
