@@ -6,3 +6,15 @@
 
 1692224645 d:\educacion\2do\segundo cuatrimentre\eda\labs\prueba\envios.h
 
+1692226293 source:d:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\prueba\main.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"envios.h"
+	"LSO.h"
+
+1692226293 d:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\prueba\envios.h
+
+1692226575 d:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\prueba\lso.h
+	"envios.h"
+
