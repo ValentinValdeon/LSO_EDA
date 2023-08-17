@@ -8,10 +8,14 @@
 //VALENTIN VALDEON
 int main(){
     int opcMenuLista,opcMenuOp;
+    lista lso;
+    initLSO(&lso);
+    envio env;
+    initEnvio(&env);
     do{
         system("cls");
         printf("--------------Bienvenido al sistema de ""El Revoleo""-------------- \n\n");
-        printf("Que estructura que desea utilizar? \n\n");
+        printf("Seleccione la opcion \n\n");
         printf("--------------------------------------------------------------- \n");
         printf("<1> Lista Secuencial Ordenada(LSO) \n");
         printf("<2> Salir del menu\n");
@@ -21,7 +25,7 @@ int main(){
         if(opcMenuLista<2){
             do{
                 system("cls");
-                printf("Que operacion desea realizar?\n");
+                printf("Seleccione la operacion a realizar\n");
                 printf("--------------------------------------------------------------- \n");
                 printf("<1> Agregar nuevos envios\n");
                 printf("<2> Eliminar envios existentes\n");
@@ -35,6 +39,11 @@ int main(){
                 scanf("%d",&opcMenuOp);
                 switch(opcMenuOp){
                     case 1:
+                        strcpy(env.codigo,"AA123BB");
+                        altaLSO(&lso,env);
+                        printf("%s",lso.arr[0].codigo);
+                        getch();
+                        break;
                     case 2:
                     case 3:
                     case 4:
