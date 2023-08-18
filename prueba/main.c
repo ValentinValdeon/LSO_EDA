@@ -11,7 +11,11 @@ int main(){
     lista lso;
     initLSO(&lso);
     envio env;
+    envio envb;
     initEnvio(&env);
+    initEnvio(&envb);
+    char codigob[8];
+    strcpy(codigob,"AA123CC");
     do{
         system("cls");
         printf("--------------Bienvenido al sistema de ""El Revoleo""-------------- \n\n");
@@ -41,11 +45,29 @@ int main(){
                     case 1:
                         strcpy(env.codigo,"AA123BB");
                         altaLSO(&lso,env);
-                        printf("%s",lso.arr[0].codigo);
+                        strcpy(envb.codigo,"AA123CC");
+                        altaLSO(&lso,envb);
+                        strcpy(envb.codigo,"AA123CC");
+                        altaLSO(&lso,envb);
+                        //printf("%s",env2.codigo);
+                        printf("%s \n",lso.arr[0].codigo);
+                        printf("%s \n",lso.arr[1].codigo);
+                        //printf("%s \n",lso.arr[2].codigo);
+                        //printf("%s \n",lso.arr[3].codigo);
+                        //printf("%s \n",lso.arr[4].codigo);
                         getch();
                         break;
                     case 2:
+                        bajaLSO(&lso,codigob);
+                        printf("%s \n",lso.arr[0].codigo);
+                        printf("%s \n",lso.arr[1].codigo);
+                        //printf("%s \n",lso.arr[2].codigo);
+                        //printf("%s \n",lso.arr[3].codigo);
+                        //printf("%s \n",lso.arr[4].codigo);
+                        getch();
+                        break;
                     case 3:
+
                     case 4:
                     case 5:
                     case 6:
