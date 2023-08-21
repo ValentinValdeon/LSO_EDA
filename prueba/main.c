@@ -10,12 +10,6 @@ int main(){
     int opcMenuLista,opcMenuOp;
     lista lso;
     initLSO(&lso);
-    envio env;
-    envio envb;
-    initEnvio(&env);
-    initEnvio(&envb);
-    char codigob[8];
-    strcpy(codigob,"AA123CC");
     do{
         system("cls");
         printf("--------------Bienvenido al sistema de ""El Revoleo""-------------- \n\n");
@@ -43,34 +37,26 @@ int main(){
                 scanf("%d",&opcMenuOp);
                 switch(opcMenuOp){
                     case 1:
-                        strcpy(env.codigo,"AA123BB");
-                        altaLSO(&lso,env);
-                        strcpy(envb.codigo,"AA123CC");
-                        altaLSO(&lso,envb);
-                        strcpy(envb.codigo,"AA123CC");
-                        altaLSO(&lso,envb);
-                        //printf("%s",env2.codigo);
-                        printf("%s \n",lso.arr[0].codigo);
-                        printf("%s \n",lso.arr[1].codigo);
-                        //printf("%s \n",lso.arr[2].codigo);
-                        //printf("%s \n",lso.arr[3].codigo);
-                        //printf("%s \n",lso.arr[4].codigo);
+
                         getch();
                         break;
                     case 2:
-                        bajaLSO(&lso,codigob);
-                        printf("%s \n",lso.arr[0].codigo);
-                        printf("%s \n",lso.arr[1].codigo);
-                        //printf("%s \n",lso.arr[2].codigo);
-                        //printf("%s \n",lso.arr[3].codigo);
-                        //printf("%s \n",lso.arr[4].codigo);
+                        eliminarEnvioLSO(&lso);
                         getch();
                         break;
                     case 3:
-
+                        consultarEnvio(lso);
+                        getch();
+                        break;
                     case 4:
+                        getch();
+                        break;
                     case 5:
+                        getch();
+                        break;
                     case 6:
+                        getch();
+                        break;
                     case 7:
                         system("cls");
                         opcMenuLista==0;
@@ -93,4 +79,52 @@ int main(){
             getch();
         }
     }while(opcMenuLista !=2);
+}
+
+void eliminarEnvioLSO(lista *lso){
+    char codigo[8];
+    int exito,otro = 1;
+    if((*lso).cant == 0){
+        printf("No hay envios\n");
+    }else{
+        while (otro == 1){
+            printf("Ingrese el codigo del envio que desea eliminar \n");
+            scanf("%s",codigo);
+            exito = bajaLSO(lso,codigo);
+            if (exito == 1){
+                printf ("El envio se elimino con exito \n");
+                printf ("Desea eliminar otro envio? <1>SI <2>NO \n");
+                scanf("%d", &otro);
+            }else if (exito == 0){
+                printf("El envio no existe \n");
+                printf ("Desea eliminar otro envio? <1>SI <2> NO \n");
+                scanf("%d", &otro);
+            }else{
+                printf("Se cancelo la eliminacion de su envio\n");
+                printf ("Desea eliminar otro envio? <1>SI <2> NO \n");
+                scanf("%d", &otro);
+            }
+        }
+    }
+}
+
+void consultarEnvio(lista lso){
+    char codigo[8];
+    envio env;
+    int exito;
+    printf("Ingrese el envio que desea consultar \n");
+    scanf("%s",codigo);
+    env = evocacionLSO(codigo, lso, &exito);
+    if (exito == 1){
+        printf("Codigo: %s\n",env.codigo);
+        printf("Documento del Receptor: %d \n",env.documentoRece);
+        printf("Nombre y Apellido del Receptor: %s \n",env.nomyapeRece);
+        printf("Domicilio del Receptor: %s \n",env.domicilioRece);
+        printf("Documento del Remitente: %d \n",env.documentoRemi);
+        printf("Nombre y Apellido del Remitente: %s \n",env.nomyapeRemi);
+        printf("Fecha de envio: %s \n",env.fechaEnv);
+        printf("Fecha de Recepcion: %s \n",env.fechaRece);
+    }else{
+        printf("El envio no existe");
+    }
 }
