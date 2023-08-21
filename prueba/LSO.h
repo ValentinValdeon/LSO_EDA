@@ -1,7 +1,7 @@
 #ifndef LSO_H_INCLUDED
 #define LSO_H_INCLUDED
 #include "envios.h"
-#define MAX 2
+#define MAX 5
 typedef struct{
     int cant;
     envio arr[MAX];

@@ -1,11 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "string.h"
 #include "envios.h"
 #include "LSO.h"
 //GRUPO
 //MARIANO ARBELOA GUGLIELMINO
 //VALENTIN VALDEON
+
+void cargarEnvio(lista *lso);
+void mostrarEstructura(lista lso);
+
 int main(){
     int opcMenuLista,opcMenuOp;
     lista lso;
@@ -37,7 +42,7 @@ int main(){
                 scanf("%d",&opcMenuOp);
                 switch(opcMenuOp){
                     case 1:
-
+                        cargarEnvio(&lso);
                         getch();
                         break;
                     case 2:
@@ -55,6 +60,7 @@ int main(){
                         getch();
                         break;
                     case 6:
+                        mostrarEstructura(lso);
                         getch();
                         break;
                     case 7:
@@ -126,5 +132,79 @@ void consultarEnvio(lista lso){
         printf("Fecha de Recepcion: %s \n",env.fechaRece);
     }else{
         printf("El envio no existe");
+    }
+}
+
+
+void cargarEnvio(lista *lso){
+    envio env;
+    int i;
+    char codigo[8];
+
+    printf("Ingrese el Codigo :");
+    scanf("%[^\n]s",codigo);
+    for (i=0;i<=8 ; i++)
+        codigo[i] = toupper(codigo[i]);
+
+    strcpy(env.codigo,toupper(codigo));
+    getchar();
+
+    printf("Ingrese el DNI del receptor:");
+    scanf("%ld",&env.documentoRece);
+     getchar();
+
+    printf("Ingrese el Nombre y Apellido del receptor :");
+    scanf("%[^\n]s",env.nomyapeRece);
+     getchar();
+
+    printf("Ingrese el Domicilio del receptor :");
+    scanf("%[^\n]s",env.domicilioRece);
+     getchar();
+
+    printf("Ingrese el DNI del remitente :");
+    scanf("%ld",&env.documentoRemi);
+     getchar();
+
+    printf("Ingrese el Nombre y Apellido del remitente :");
+    scanf("%[^\n]s",env.nomyapeRemi);
+     getchar();
+
+    printf("Ingrese la fecha de envio (formato: DD/MM/AAAA):");
+    scanf("%[^\n]s",env.fechaEnv);
+     getchar();
+
+    printf("Ingrese la fecha de llegada (formato: DD/MM/AAAA):");
+    scanf("%[^\n]s",env.fechaRece);
+     getchar();
+
+    altaLSO(lso,env);
+}
+
+
+void mostrarEstructura(lista lso){
+    int i,resp=0;
+    for(i=0;i<=(lso.cant-1);i++){
+        printf("\n---------------------------------------------------------------");
+        printf("\nCodigo del envio: %s", lso.arr[i].codigo);
+        printf("\n--------DATOS DEL REMITENTE--------");
+        printf("\nNombre y Apellido: %s", lso.arr[i].nomyapeRemi);
+        printf("\nDNI: %ld", lso.arr[i].documentoRemi);
+        printf("\n--------DATOS DEL RECEPTOR--------");
+        printf("\nNombre y Apellido: %s", lso.arr[i].nomyapeRece);
+        printf("\nDNI: %ld", lso.arr[i].documentoRece);
+        printf("\nDomicilio: %s", lso.arr[i].domicilioRece);
+        printf("\n--------DATOS DEL ENVIO--------");
+        printf("\nFecha de Envio: %s", lso.arr[i].fechaEnv);
+        printf("\nFecha de Llegada: %s", lso.arr[i].fechaRece);
+        printf("\n---------------------------------------------------------------");
+        getchar();
+        printf("\n<1> Seguir mostrando \n");
+        printf("\n<2> Salir al menu\n");
+        printf("\n--------------------------------------------------------------- ");
+        printf("\nIngrese una opcion: ");
+        scanf("%d",&resp);
+        system("cls");
+        if (resp==2)
+            i=lso.cant;
     }
 }
