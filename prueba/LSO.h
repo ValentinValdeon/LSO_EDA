@@ -1,7 +1,7 @@
 #ifndef LSO_H_INCLUDED
 #define LSO_H_INCLUDED
 #include "envios.h"
-#define MAX 5
+#define MAX 2
 typedef struct{
     int cant;
     envio arr[MAX];
@@ -16,7 +16,6 @@ void initLSO(lista *lso){
 
 int localizarLSO(char cod[],lista *lso,int *pos){
     int i=0;
-    int b;
     while(i<=MAX && (strcmp((*lso).arr[i].codigo,cod)<0)){
         i++;
     }
@@ -60,10 +59,10 @@ int bajaLSO(lista *lso,char codigo[]){
     if(exito == 1){
         printf("Envio N: %d \n",pos+1);
         printf("Codigo: %s \n",(*lso).arr[pos].codigo);
-        printf("Documento del receptor: %d \n",(*lso).arr[pos].documentoRece);
+        printf("Documento del receptor: %ld \n",(*lso).arr[pos].documentoRece);
         printf("Nombre y Apellido del receptor: %s \n",(*lso).arr[pos].nomyapeRece);
         printf("Domicilio del receptor: %s \n",(*lso).arr[pos].domicilioRece);
-        printf("Documento del remitente: %d \n",(*lso).arr[pos].documentoRemi);
+        printf("Documento del remitente: %ld \n",(*lso).arr[pos].documentoRemi);
         printf("Nombre y Apellido del remitente: %s \n",(*lso).arr[pos].nomyapeRemi);
         printf("Fecha de envio: %s \n",(*lso).arr[pos].fechaEnv);
         printf("Fecha de recepcion: %s \n",(*lso).arr[pos].fechaRece);

@@ -10,6 +10,9 @@
 
 void cargarEnvio(lista *lso);
 void mostrarEstructura(lista lso);
+void eliminarEnvioLSO(lista *lso);
+void consultarEnvio(lista lso);
+
 
 int main(){
     int opcMenuLista,opcMenuOp;
@@ -43,25 +46,25 @@ int main(){
                 switch(opcMenuOp){
                     case 1:
                         cargarEnvio(&lso);
-                        getch();
+                        getchar();
                         break;
                     case 2:
                         eliminarEnvioLSO(&lso);
-                        getch();
+                        getchar();
                         break;
                     case 3:
                         consultarEnvio(lso);
-                        getch();
+                        getchar();
                         break;
                     case 4:
-                        getch();
+                        getchar();
                         break;
                     case 5:
-                        getch();
+                        getchar();
                         break;
                     case 6:
                         mostrarEstructura(lso);
-                        getch();
+                        getchar();
                         break;
                     case 7:
                         system("cls");
@@ -71,7 +74,7 @@ int main(){
                         system("cls");
                         printf("-------------------Opcion Incorrecta--------------------\n");
                         printf("------Presione cualquier tecla para volver al menu------");
-                        getch();
+                        getchar();
                         break;
                 }
             }while(opcMenuOp !=7);
@@ -85,6 +88,7 @@ int main(){
             getch();
         }
     }while(opcMenuLista !=2);
+    return 0;
 }
 
 void eliminarEnvioLSO(lista *lso){
@@ -117,16 +121,19 @@ void eliminarEnvioLSO(lista *lso){
 void consultarEnvio(lista lso){
     char codigo[8];
     envio env;
-    int exito;
+    int exito,i;
     printf("Ingrese el envio que desea consultar \n");
     scanf("%s",codigo);
+    for (i=0;i<=8 ; i++)
+        codigo[i] = toupper(codigo[i]);
+
     env = evocacionLSO(codigo, lso, &exito);
     if (exito == 1){
         printf("Codigo: %s\n",env.codigo);
-        printf("Documento del Receptor: %d \n",env.documentoRece);
+        printf("Documento del Receptor: %ld \n",env.documentoRece);
         printf("Nombre y Apellido del Receptor: %s \n",env.nomyapeRece);
         printf("Domicilio del Receptor: %s \n",env.domicilioRece);
-        printf("Documento del Remitente: %d \n",env.documentoRemi);
+        printf("Documento del Remitente: %ld \n",env.documentoRemi);
         printf("Nombre y Apellido del Remitente: %s \n",env.nomyapeRemi);
         printf("Fecha de envio: %s \n",env.fechaEnv);
         printf("Fecha de Recepcion: %s \n",env.fechaRece);
@@ -146,7 +153,7 @@ void cargarEnvio(lista *lso){
     for (i=0;i<=8 ; i++)
         codigo[i] = toupper(codigo[i]);
 
-    strcpy(env.codigo,toupper(codigo));
+    strcpy(env.codigo,codigo);
     getchar();
 
     printf("Ingrese el DNI del receptor:");
@@ -177,9 +184,11 @@ void cargarEnvio(lista *lso){
     scanf("%[^\n]s",env.fechaRece);
      getchar();
 
-    altaLSO(lso,env);
+    if (!altaLSO(lso,env)){
+        printf("\nError al agregar el envio.\nPuede que la lista este llena o el envio con ese codigo ya existe.\nPresione ENTER para continuar");
+        getchar();
+    }
 }
-
 
 void mostrarEstructura(lista lso){
     int i,resp=0;
