@@ -12,7 +12,8 @@ void cargarEnvio(lista *lso);
 void mostrarEstructura(lista lso);
 void eliminarEnvioLSO(lista *lso);
 void consultarEnvio(lista lso);
-
+void modificarEnvio(lista *lso);
+void memorizacionPrevia(lista *lso);
 
 int main(){
     int opcMenuLista,opcMenuOp;
@@ -53,14 +54,14 @@ int main(){
                         getchar();
                         break;
                     case 3:
-                        consultarEnvio(lso);
                         getchar();
                         break;
                     case 4:
+                        consultarEnvio(lso);
                         getchar();
                         break;
                     case 5:
-                        getchar();
+                        memorizacionPrevia(&lso);
                         break;
                     case 6:
                         mostrarEstructura(lso);
@@ -85,7 +86,7 @@ int main(){
             system("cls");
             printf("-------------------Opcion Incorrecta--------------------\n");
             printf("------Presione cualquier tecla para volver al menu------");
-            getch();
+            getchar();
         }
     }while(opcMenuLista !=2);
     return 0;
@@ -148,8 +149,13 @@ void cargarEnvio(lista *lso){
     int i;
     char codigo[8];
 
-    printf("Ingrese el Codigo :");
-    scanf("%[^\n]s",codigo);
+    fflush(stdin);
+    do {
+        printf("Ingrese el Codigo (7 caracteres):");
+        scanf("%[^\n]s",codigo);
+        system("cls");
+    }while(strlen(codigo)!= 7);
+
     for (i=0;i<=8 ; i++)
         codigo[i] = toupper(codigo[i]);
 
@@ -192,6 +198,7 @@ void cargarEnvio(lista *lso){
 
 void mostrarEstructura(lista lso){
     int i,resp=0;
+    system("cls");
     for(i=0;i<=(lso.cant-1);i++){
         printf("\n---------------------------------------------------------------");
         printf("\nCodigo del envio: %s", lso.arr[i].codigo);
@@ -216,4 +223,51 @@ void mostrarEstructura(lista lso){
         if (resp==2)
             i=lso.cant;
     }
+    if (resp != 2){
+        printf("Se termino la estructura. Presione ENTER para volver al menu.");
+        getchar();
+    }
+}
+
+void memorizacionPrevia(lista *lso){
+    FILE *fp;
+    envio env;
+    int cantPreCarga=0;
+
+    if((fp = fopen("Envios.txt","r"))==NULL){
+        printf("El txt esta vacio\n");
+        getchar();
+        //return 0;
+    }else {
+        while (!(feof(fp)) && ((*lso).cant) < MAX-1)
+        {
+            fscanf(fp," %[^\n]s",env.codigo);
+            fscanf(fp," %ld",&env.documentoRece);
+            fscanf(fp," %[^\n]s",env.nomyapeRece);
+            fscanf(fp," %[^\n]s",env.domicilioRece);
+            fscanf(fp," %ld",&env.documentoRemi);
+            fscanf(fp," %[^\n]s",env.nomyapeRemi);
+            fscanf(fp," %[^\n]s",env.fechaEnv);
+            fscanf(fp," %[^\n]s",env.fechaRece);
+
+
+            if (altaLSO(lso,env))
+            {
+                cantPreCarga++;
+            }
+        }
+
+        if (!(feof(fp)))
+        {
+            printf("Se llego al limite de Envios, quedaron vendedores sin cargar del archivo.\n");
+        }
+        printf("Se cargaron correctamente %d envios\n",cantPreCarga);
+        printf("En total hay %d envios cargados en la estructura\n",(*lso).cant);
+        printf("Presione ENTER para continuar");
+        fflush(stdin);
+        getchar();
+        system("cls");
+        //return 1;
+    }
+    fclose(fp);
 }

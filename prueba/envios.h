@@ -1,14 +1,14 @@
 #ifndef ENVIOS_H_INCLUDED
 #define ENVIOS_H_INCLUDED
 typedef struct {
-    char codigo[7];
+    char codigo[8];
     long documentoRece;
-    char nomyapeRece[80];
-    char domicilioRece[80];
+    char nomyapeRece[81];
+    char domicilioRece[81];
     long documentoRemi;
-    char nomyapeRemi[80];
-    char fechaEnv[10];
-    char fechaRece[10];
+    char nomyapeRemi[81];
+    char fechaEnv[11];
+    char fechaRece[11];
 }envio;
 void initEnvio (envio *env){
     strcpy((*env).codigo,"0");
