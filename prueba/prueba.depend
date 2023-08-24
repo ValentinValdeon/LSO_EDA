@@ -19,16 +19,17 @@
 1692842179 d:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\prueba\lso.h
 	"envios.h"
 
-1692285676 source:d:\educación\a.unsl\2do\segundo cuatrimentre\eda\tpmaquina\lso_eda\prueba\main.c
+1692891019 source:d:\educación\a.unsl\2do\segundo cuatrimentre\eda\tpmaquina\lso_eda\prueba\main.c
 	<stdio.h>
 	<stdlib.h>
+	<ctype.h>
 	"string.h"
 	"envios.h"
 	"LSO.h"
 
-1692283110 d:\educación\a.unsl\2do\segundo cuatrimentre\eda\tpmaquina\lso_eda\prueba\envios.h
+1692799971 d:\educación\a.unsl\2do\segundo cuatrimentre\eda\tpmaquina\lso_eda\prueba\envios.h
 
-1692286550 d:\educación\a.unsl\2do\segundo cuatrimentre\eda\tpmaquina\lso_eda\prueba\lso.h
+1692891118 d:\educación\a.unsl\2do\segundo cuatrimentre\eda\tpmaquina\lso_eda\prueba\lso.h
 	"envios.h"
 
 1692657415 source:c:\users\valen\onedrive\escritorio\eda\lso-tp\lso_eda\prueba\main.c

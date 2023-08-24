@@ -1,7 +1,7 @@
 #ifndef LSO_H_INCLUDED
 #define LSO_H_INCLUDED
 #include "envios.h"
-#define MAX 10
+#define MAX 300
 typedef struct{
     int cant;
     envio arr[MAX];
@@ -21,7 +21,6 @@ int localizarLSO(char cod[],lista *lso,int *pos){
     }
     (*pos)=i;
     if ((strcmp((*lso).arr[i].codigo,cod)==0)){
-        printf("Te encontre puto");
         return 1;
     }else{
         return 0;
@@ -100,8 +99,7 @@ envio evocacionLSO(char cod[], lista lso,int *exito){
 
 int modificarLSO(envio env, lista *lso){
     int pos=0;
-    if (localizarLSO(env.codigo,lso,&pos))
-    {
+    if (localizarLSO(env.codigo,lso,&pos)){ //TENEMOS QUE PONER CARTELES DENTRO DEL MODIFICAR, HACER TODO DENTRO DEL MISMO CON UN SWITCH ELIGIENDO QUE MODIFICAR
         strcpy((*lso).arr[pos].nomyapeRece,env.nomyapeRece);
         strcpy((*lso).arr[pos].nomyapeRemi,env.nomyapeRemi);
         strcpy((*lso).arr[pos].domicilioRece,env.nomyapeRece);
