@@ -56,25 +56,31 @@ int main(){
                 scanf("%d",&opcMenuOp);
                 switch(opcMenuOp){
                     case 1:
+                        system("cls");
                         cargarEnvio(&lso);
                         getchar();
                         break;
                     case 2:
+                        system("cls");
                         eliminarEnvioLSO(&lso);
                         getchar();
                         break;
                     case 3:
+                        system("cls");
                         modificarLSO(env,&lso);
                         getchar();
                         break;
                     case 4:
+                        system("cls");
                         consultarEnvio(lso);
                         getchar();
                         break;
                     case 5:
+                        system("cls");
                         memorizacionPrevia(&lso);
                         break;
                     case 6:
+                        system("cls");
                         mostrarEstructura(lso);
                         getchar();
                         break;
@@ -105,13 +111,15 @@ int main(){
 
 void eliminarEnvioLSO(lista *lso){
     char codigo[8];
-    int exito,otro = 1;
+    int exito,otro = 1,i=0;
     if((*lso).cant == 0){
         printf("No hay envios\n");
     }else{
         while (otro == 1){
             printf("Ingrese el codigo del envio que desea eliminar \n");
             scanf("%s",codigo);
+            for (i=0;i<=8 ; i++)
+                codigo[i] = toupper(codigo[i]);
             exito = bajaLSO(lso,codigo);
             if (exito == 1){
                 printf ("El envio se elimino con exito \n");
@@ -157,53 +165,60 @@ void consultarEnvio(lista lso){
 
 void cargarEnvio(lista *lso){
     envio env;
-    int i;
+    int i, exito=0;
     char codigo[8];
-
     fflush(stdin);
-    do {
-        printf("Ingrese el Codigo (7 caracteres):");
-        scanf("%[^\n]s",codigo);
-        system("cls");
-    }while(strlen(codigo)!= 7);
+    if ((*lso).cant == MAX){
+        printf("El registro de envios no tiene espacio \n");
+    }else{
+        do {
+            printf("Ingrese el Codigo (7 caracteres):");
+            scanf("%[^\n]s",codigo);
+            system("cls");
+        }while(strlen(codigo)!= 7);
 
-    for (i=0;i<=8 ; i++)
-        codigo[i] = toupper(codigo[i]);
+        for (i=0;i<=8 ; i++)
+            codigo[i] = toupper(codigo[i]);
 
-    strcpy(env.codigo,codigo);
-    getchar();
-
-    printf("Ingrese el DNI del receptor:");
-    scanf("%ld",&env.documentoRece);
-     getchar();
-
-    printf("Ingrese el Nombre y Apellido del receptor :");
-    scanf("%[^\n]s",env.nomyapeRece);
-     getchar();
-
-    printf("Ingrese el Domicilio del receptor :");
-    scanf("%[^\n]s",env.domicilioRece);
-     getchar();
-
-    printf("Ingrese el DNI del remitente :");
-    scanf("%ld",&env.documentoRemi);
-     getchar();
-
-    printf("Ingrese el Nombre y Apellido del remitente :");
-    scanf("%[^\n]s",env.nomyapeRemi);
-     getchar();
-
-    printf("Ingrese la fecha de envio (formato: DD/MM/AAAA):");
-    scanf("%[^\n]s",env.fechaEnv);
-     getchar();
-
-    printf("Ingrese la fecha de llegada (formato: DD/MM/AAAA):");
-    scanf("%[^\n]s",env.fechaRece);
-     getchar();
-
-    if (!altaLSO(lso,env)){
-        printf("\nError al agregar el envio.\nPuede que la lista este llena o el envio con ese codigo ya existe.\nPresione ENTER para continuar");
+        strcpy(env.codigo,codigo);
         getchar();
+
+        printf("Ingrese el DNI del receptor:");
+        scanf("%ld",&env.documentoRece);
+        getchar();
+
+        printf("Ingrese el Nombre y Apellido del receptor :");
+        scanf("%[^\n]s",env.nomyapeRece);
+        getchar();
+
+        printf("Ingrese el Domicilio del receptor :");
+        scanf("%[^\n]s",env.domicilioRece);
+        getchar();
+
+        printf("Ingrese el DNI del remitente :");
+        scanf("%ld",&env.documentoRemi);
+        getchar();
+
+        printf("Ingrese el Nombre y Apellido del remitente :");
+        scanf("%[^\n]s",env.nomyapeRemi);
+        getchar();
+
+        printf("Ingrese la fecha de envio (formato: DD/MM/AAAA):");
+        scanf("%[^\n]s",env.fechaEnv);
+        getchar();
+
+        printf("Ingrese la fecha de llegada (formato: DD/MM/AAAA):");
+        scanf("%[^\n]s",env.fechaRece);
+        getchar();
+
+        exito = altaLSO(lso,env);
+        if (exito == 1){
+            printf("\nEl envio se agrego correctamente \n Presione ENTER para continuar");
+            getchar();
+        }else{
+            printf("\nError al agregar el envio.\nEl envio con ese codigo ya existe.\nPresione ENTER para continuar");
+            getchar();
+        }
     }
 }
 

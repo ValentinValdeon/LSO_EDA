@@ -100,7 +100,6 @@ envio evocacionLSO(char cod[], lista lso,int *exito){
 
 int modificarLSO(envio env, lista *lso){
     int pos=0;
-
     if (localizarLSO(env.codigo,lso,&pos))
     {
         strcpy((*lso).arr[pos].nomyapeRece,env.nomyapeRece);
@@ -110,11 +109,8 @@ int modificarLSO(envio env, lista *lso){
         strcpy((*lso).arr[pos].fechaRece,env.nomyapeRece);
         (*lso).arr[pos].documentoRece = env.documentoRece;
         (*lso).arr[pos].documentoRemi= env.documentoRemi;
-
         return 1;
-    }
-    else
-    {
+    }else{
         return 0;
     }
 

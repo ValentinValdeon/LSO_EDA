@@ -6,16 +6,17 @@
 
 1692224645 d:\educacion\2do\segundo cuatrimentre\eda\labs\prueba\envios.h
 
-1692312480 source:d:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\prueba\main.c
+1692837275 source:d:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\prueba\main.c
 	<stdio.h>
 	<stdlib.h>
+	<ctype.h>
 	"string.h"
 	"envios.h"
 	"LSO.h"
 
-1692226293 d:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\prueba\envios.h
+1692837275 d:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\prueba\envios.h
 
-1692313234 d:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\prueba\lso.h
+1692842179 d:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\prueba\lso.h
 	"envios.h"
 
 1692285676 source:d:\educación\a.unsl\2do\segundo cuatrimentre\eda\tpmaquina\lso_eda\prueba\main.c
