@@ -58,7 +58,7 @@ int main(){
                         break;
                     case 3:
                         system("cls");
-                        modificarLSO(env,&lso);
+                        modificarEnvio(&lso);
                         getchar();
                         break;
                     case 4:
@@ -105,10 +105,13 @@ void eliminarEnvioLSO(lista *lso){
     int exito,otro = 1,i=0;
     if((*lso).cant == 0){
         printf("No hay envios\n");
+        getchar();
     }else{
         while (otro == 1){
-            printf("Ingrese el codigo del envio que desea eliminar \n");
-            scanf("%s",codigo);
+            do {
+                printf("Ingrese el codigo del envio que desea eliminar \n");
+                scanf("%s",codigo);
+            }while(strlen(codigo)!= 7);
             for (i=0;i<=8 ; i++)
                 codigo[i] = toupper(codigo[i]);
             exito = bajaLSO(lso,codigo);
@@ -133,11 +136,12 @@ void consultarEnvio(lista lso){
     char codigo[8];
     envio env;
     int exito,i;
-    printf("Ingrese el envio que desea consultar \n");
-    scanf("%s",codigo);
+    do {
+        printf("Ingrese el envio que desea consultar \n");
+        scanf("%s",codigo);
+    }while(strlen(codigo)!= 7);
     for (i=0;i<=8 ; i++)
         codigo[i] = toupper(codigo[i]);
-
     env = evocacionLSO(codigo, lso, &exito);
     if (exito == 1){
         printf("Codigo: %s\n",env.codigo);
@@ -149,7 +153,7 @@ void consultarEnvio(lista lso){
         printf("Fecha de envio: %s \n",env.fechaEnv);
         printf("Fecha de Recepcion: %s \n",env.fechaRece);
     }else{
-        printf("El envio no existe");
+        printf("El envio no existe\n");
     }
 }
 
@@ -161,12 +165,13 @@ void cargarEnvio(lista *lso){
     fflush(stdin);
     if ((*lso).cant == MAX){
         printf("El registro de envios no tiene espacio \n");
+        getchar();
     }else{
-        //do {
+        do {
             system("cls");
             printf("Ingrese el Codigo (7 caracteres):");
-            scanf("%[^\n]s",codigo);
-        //}while(strlen(codigo)!= 7);
+            scanf("%s",codigo);
+        }while(strlen(codigo)!= 7);
 
         for (i=0;i<=8 ; i++)
             codigo[i] = toupper(codigo[i]);
@@ -217,6 +222,7 @@ void mostrarEstructura(lista lso){
     int i;
     if(lso.cant==0){
         printf("No hay envios \n");
+        getchar();
     }else{
         getchar();
         for(i=0;i<=lso.cant-1;i++){
@@ -245,7 +251,6 @@ void memorizacionPrevia(lista *lso){
     if((fp = fopen("Envios.txt","r"))==NULL){
         printf("El txt esta vacio\n");
         getchar();
-        //return 0;
     }else {
         while (!(feof(fp)) && ((*lso).cant) < MAX-1)
         {
@@ -277,4 +282,27 @@ void memorizacionPrevia(lista *lso){
         system("cls");
     }
     fclose(fp);
+}
+
+void modificarEnvio(lista *lso){
+    char codigo[8];
+    int exito,i;
+    if((*lso).cant == 0){
+        printf("No hay envios en el registro \n");
+        getchar();
+    }else{
+        do{
+            system("cls");
+            printf("Ingrese el Codigo (7 caracteres):");
+            scanf("%s",codigo);
+        }while(strlen(codigo)!= 7);
+        for (i=0;i<=8 ; i++)
+            codigo[i] = toupper(codigo[i]);
+        exito = modificarLSO(codigo,lso);
+        if(exito==1){
+            printf("El envio se modifico correctamente \n");
+        }else{
+            printf("El envio no pudo modificarse\n");
+        }
+    }
 }
