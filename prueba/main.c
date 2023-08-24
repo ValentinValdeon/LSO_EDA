@@ -19,6 +19,16 @@ int main(){
     int opcMenuLista,opcMenuOp;
     lista lso;
     initLSO(&lso);
+    envio env;
+    strcpy(env.codigo,"AABBCC1");
+    strcpy(env.domicilioRece,"por ahi");
+    strcpy(env.fechaEnv,"11/11/1111");
+    strcpy(env.fechaRece,"11/11/1111");
+    strcpy(env.nomyapeRece,"Pepe");
+    strcpy(env.nomyapeRemi,"Papa");
+    env.documentoRece = 111111;
+    env.documentoRemi = 111111;
+
     do{
         system("cls");
         printf("--------------Bienvenido al sistema de ""El Revoleo""-------------- \n\n");
@@ -54,6 +64,7 @@ int main(){
                         getchar();
                         break;
                     case 3:
+                        modificarLSO(env,&lso);
                         getchar();
                         break;
                     case 4:
@@ -197,22 +208,25 @@ void cargarEnvio(lista *lso){
 }
 
 void mostrarEstructura(lista lso){
-    int i,resp=0;
+    int i,j,cant=0,resp=0;
     system("cls");
-    for(i=0;i<=(lso.cant-1);i++){
-        printf("\n---------------------------------------------------------------");
-        printf("\nCodigo del envio: %s", lso.arr[i].codigo);
-        printf("\n--------DATOS DEL REMITENTE--------");
-        printf("\nNombre y Apellido: %s", lso.arr[i].nomyapeRemi);
-        printf("\nDNI: %ld", lso.arr[i].documentoRemi);
-        printf("\n--------DATOS DEL RECEPTOR--------");
-        printf("\nNombre y Apellido: %s", lso.arr[i].nomyapeRece);
-        printf("\nDNI: %ld", lso.arr[i].documentoRece);
-        printf("\nDomicilio: %s", lso.arr[i].domicilioRece);
-        printf("\n--------DATOS DEL ENVIO--------");
-        printf("\nFecha de Envio: %s", lso.arr[i].fechaEnv);
-        printf("\nFecha de Llegada: %s", lso.arr[i].fechaRece);
-        printf("\n---------------------------------------------------------------");
+    for(i=0;i<=(lso.cant-1)/3;i++){
+        for (j=cant;j<(3+cant);j++ ){
+            printf("\n---------------------------------------------------------------");
+            printf("\nCodigo del envio: %s", lso.arr[j].codigo);
+            printf("\n--------DATOS DEL REMITENTE--------");
+            printf("\nNombre y Apellido: %s", lso.arr[j].nomyapeRemi);
+            printf("\nDNI: %ld", lso.arr[j].documentoRemi);
+            printf("\n--------DATOS DEL RECEPTOR--------");
+            printf("\nNombre y Apellido: %s", lso.arr[j].nomyapeRece);
+            printf("\nDNI: %ld", lso.arr[j].documentoRece);
+            printf("\nDomicilio: %s", lso.arr[j].domicilioRece);
+            printf("\n--------DATOS DEL ENVIO--------");
+            printf("\nFecha de Envio: %s", lso.arr[j].fechaEnv);
+            printf("\nFecha de Llegada: %s", lso.arr[j].fechaRece);
+            printf("\n---------------------------------------------------------------");
+        }
+            cant+=3;
         getchar();
         printf("\n<1> Seguir mostrando \n");
         printf("\n<2> Salir al menu\n");

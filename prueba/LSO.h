@@ -1,7 +1,7 @@
 #ifndef LSO_H_INCLUDED
 #define LSO_H_INCLUDED
 #include "envios.h"
-#define MAX 5
+#define MAX 10
 typedef struct{
     int cant;
     envio arr[MAX];
@@ -96,6 +96,28 @@ envio evocacionLSO(char cod[], lista lso,int *exito){
     *exito = localizarLSO(cod,&lso,&pos);
     if(*exito == 1)
         return lso.arr[pos];
+}
+
+int modificarLSO(envio env, lista *lso){
+    int pos=0;
+
+    if (localizarLSO(env.codigo,lso,&pos))
+    {
+        strcpy((*lso).arr[pos].nomyapeRece,env.nomyapeRece);
+        strcpy((*lso).arr[pos].nomyapeRemi,env.nomyapeRemi);
+        strcpy((*lso).arr[pos].domicilioRece,env.nomyapeRece);
+        strcpy((*lso).arr[pos].fechaEnv,env.nomyapeRece);
+        strcpy((*lso).arr[pos].fechaRece,env.nomyapeRece);
+        (*lso).arr[pos].documentoRece = env.documentoRece;
+        (*lso).arr[pos].documentoRemi= env.documentoRemi;
+
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+
 }
 
 #endif // LSO_H_INCLUDED
