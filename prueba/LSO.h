@@ -1,7 +1,7 @@
 #ifndef LSO_H_INCLUDED
 #define LSO_H_INCLUDED
 #include "envios.h"
-#define MAX 300
+#define MAX 2
 typedef struct{
     int cant;
     envio arr[MAX];
@@ -31,11 +31,6 @@ int altaLSO(lista *lso,envio env){
     int pos,exito,i;
     exito = localizarLSO(env.codigo,lso,&pos);
     if(exito == 0){
-        if((*lso).cant==0){
-            (*lso).arr[pos] = env;
-            (*lso).cant++;
-            return 1; //exito alta, caso especial
-        }else{
             if((*lso).cant<MAX){
                 for(i=(*lso).cant;i>=pos;i--){
                     (*lso).arr[i+1]=(*lso).arr[i];
@@ -46,7 +41,6 @@ int altaLSO(lista *lso,envio env){
             }else{
                 return 2;//Si esta llena
             }
-        }
     }else{
         return 0;//si el elemento esta en la lista
     }
@@ -72,14 +66,10 @@ int bajaLSO(lista *lso,char codigo[]){
             scanf("%d",&confirmar);
         }
         if(confirmar==1){
-            /*if((*lso).cant == MAX && pos == (*lso).cant-1){ //Pregunta por el if de LISTA LLENA
-                strcpy((*lso).arr[pos].codigo,"0");
-            }else{*/
                 for(i=pos;i<(*lso).cant;i++){
                     (*lso).arr[i]=(*lso).arr[i+1];
                 }
                 strcpy((*lso).arr[(*lso).cant].codigo,"z");
-            //}
             (*lso).cant--;
             return 1; //Baja exitosa
         }else{
@@ -106,7 +96,7 @@ int modificarLSO(int codigo,lista *lso){
     char nomyapeRemi[81];
     char fechaEnv[11];
     char fechaRece[11];
-    if (localizarLSO(codigo,lso,&pos)){ //TENEMOS QUE PONER CARTELES DENTRO DEL MODIFICAR, HACER TODO DENTRO DEL MISMO CON UN SWITCH ELIGIENDO QUE MODIFICAR
+    if (localizarLSO(codigo,lso,&pos)){
         do{
             printf("Envio N: %d \n",pos+1);
             printf("Codigo: %s \n",(*lso).arr[pos].codigo);
@@ -120,6 +110,7 @@ int modificarLSO(int codigo,lista *lso){
             printf("<8>Terminar modificaciones \n");
             printf("Que desea modificar <1-8> \n");
             scanf("%d",&fin);
+            fflush(stdin);
             switch(fin){
                 case 1:
                     system("cls");
@@ -137,7 +128,7 @@ int modificarLSO(int codigo,lista *lso){
                     system("cls");
                     printf("Ingrese el nuevo Domicilio del Receptor\n");
                     scanf("%[^\n]s",domicilioRece);
-                    strcpy((*lso).arr[pos].domicilioRece,nomyapeRece);
+                    strcpy((*lso).arr[pos].domicilioRece,domicilioRece);
                     break;
                 case 4:
                     system("cls");

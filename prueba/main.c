@@ -49,7 +49,6 @@ int main(){
                     case 1:
                         system("cls");
                         cargarEnvio(&lso);
-                        getchar();
                         break;
                     case 2:
                         system("cls");
@@ -59,7 +58,6 @@ int main(){
                     case 3:
                         system("cls");
                         modificarEnvio(&lso);
-                        getchar();
                         break;
                     case 4:
                         system("cls");
@@ -73,7 +71,6 @@ int main(){
                     case 6:
                         system("cls");
                         mostrarEstructura(lso);
-                        getchar();
                         break;
                     case 7:
                         system("cls");
@@ -104,7 +101,8 @@ void eliminarEnvioLSO(lista *lso){
     char codigo[8];
     int exito,otro = 1,i=0;
     if((*lso).cant == 0){
-        printf("No hay envios\n");
+        printf("No hay envios en el registro\n");
+        printf("Presione ENTER para continuar");
         getchar();
     }else{
         while (otro == 1){
@@ -152,8 +150,12 @@ void consultarEnvio(lista lso){
         printf("Nombre y Apellido del Remitente: %s \n",env.nomyapeRemi);
         printf("Fecha de envio: %s \n",env.fechaEnv);
         printf("Fecha de Recepcion: %s \n",env.fechaRece);
+        printf("Presione ENTER para continuar");
+        getchar();
     }else{
         printf("El envio no existe\n");
+        printf("Presione ENTER para continuar");
+        getchar();
     }
 }
 
@@ -165,6 +167,7 @@ void cargarEnvio(lista *lso){
     fflush(stdin);
     if ((*lso).cant == MAX){
         printf("El registro de envios no tiene espacio \n");
+        printf("Presione ENTER para continuar");
         getchar();
     }else{
         do {
@@ -221,7 +224,8 @@ void cargarEnvio(lista *lso){
 void mostrarEstructura(lista lso){
     int i;
     if(lso.cant==0){
-        printf("No hay envios \n");
+        printf("No hay envios en el registro \n");
+        printf("Presione ENTER para continuar");
         getchar();
     }else{
         getchar();
@@ -238,6 +242,7 @@ void mostrarEstructura(lista lso){
             printf("\n--------DATOS DEL ENVIO--------");
             printf("\nFecha de Envio: %s", lso.arr[i].fechaEnv);
             printf("\nFecha de Llegada: %s", lso.arr[i].fechaRece);
+            printf("\nPresione ENTER para continuar");
             getchar();
         }
     }
@@ -249,10 +254,11 @@ void memorizacionPrevia(lista *lso){
     int cantPreCarga=0;
 
     if((fp = fopen("Envios.txt","r"))==NULL){
-        printf("El txt esta vacio\n");
+        printf("El archivo esta vacio\n");
+        printf("Presione ENTER para continuar");
         getchar();
     }else {
-        while (!(feof(fp)) && ((*lso).cant) < MAX-1)
+        while (!(feof(fp)) && ((*lso).cant) < MAX)
         {
             fscanf(fp," %[^\n]s",env.codigo);
             fscanf(fp," %ld",&env.documentoRece);
@@ -289,6 +295,7 @@ void modificarEnvio(lista *lso){
     int exito,i;
     if((*lso).cant == 0){
         printf("No hay envios en el registro \n");
+        printf("Presione ENTER para continuar");
         getchar();
     }else{
         do{
@@ -301,8 +308,12 @@ void modificarEnvio(lista *lso){
         exito = modificarLSO(codigo,lso);
         if(exito==1){
             printf("El envio se modifico correctamente \n");
+            printf("Presione ENTER para continuar");
+            getchar();
         }else{
             printf("El envio no pudo modificarse\n");
+            printf("Presione ENTER para continuar");
+            getchar();
         }
     }
 }
