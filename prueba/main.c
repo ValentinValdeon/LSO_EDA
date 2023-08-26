@@ -4,7 +4,7 @@
 #include "string.h"
 #include "envios.h"
 #include "LSO.h"
-//GRUPO
+//GRUPO13
 //MARIANO ARBELOA GUGLIELMINO
 //VALENTIN VALDEON
 
@@ -45,6 +45,7 @@ int main(){
                 printf("--------------------------------------------------------------- \n");
                 printf("Ingrese una opcion\n");
                 scanf("%d",&opcMenuOp);
+                fflush(stdin);
                 switch(opcMenuOp){
                     case 1:
                         system("cls");
@@ -134,28 +135,34 @@ void consultarEnvio(lista lso){
     char codigo[8];
     envio env;
     int exito,i;
-    do {
-        printf("Ingrese el envio que desea consultar \n");
-        scanf("%s",codigo);
-    }while(strlen(codigo)!= 7);
-    for (i=0;i<=8 ; i++)
-        codigo[i] = toupper(codigo[i]);
-    env = evocacionLSO(codigo, lso, &exito);
-    if (exito == 1){
-        printf("Codigo: %s\n",env.codigo);
-        printf("Documento del Receptor: %ld \n",env.documentoRece);
-        printf("Nombre y Apellido del Receptor: %s \n",env.nomyapeRece);
-        printf("Domicilio del Receptor: %s \n",env.domicilioRece);
-        printf("Documento del Remitente: %ld \n",env.documentoRemi);
-        printf("Nombre y Apellido del Remitente: %s \n",env.nomyapeRemi);
-        printf("Fecha de envio: %s \n",env.fechaEnv);
-        printf("Fecha de Recepcion: %s \n",env.fechaRece);
+    if(lso.cant==0){
+        printf("No hay envios en el registro \n");
         printf("Presione ENTER para continuar");
         getchar();
     }else{
-        printf("El envio no existe\n");
-        printf("Presione ENTER para continuar");
-        getchar();
+        do {
+            printf("Ingrese el envio que desea consultar \n");
+            scanf("%s",codigo);
+        }while(strlen(codigo)!= 7);
+        for (i=0;i<=8 ; i++)
+            codigo[i] = toupper(codigo[i]);
+        env = evocacionLSO(codigo, lso, &exito);
+        if (exito == 1){
+            printf("Codigo: %s\n",env.codigo);
+            printf("Documento del Receptor: %ld \n",env.documentoRece);
+            printf("Nombre y Apellido del Receptor: %s \n",env.nomyapeRece);
+            printf("Domicilio del Receptor: %s \n",env.domicilioRece);
+            printf("Documento del Remitente: %ld \n",env.documentoRemi);
+            printf("Nombre y Apellido del Remitente: %s \n",env.nomyapeRemi);
+            printf("Fecha de envio: %s \n",env.fechaEnv);
+            printf("Fecha de Recepcion: %s \n",env.fechaRece);
+            printf("Presione ENTER para continuar");
+            getchar();
+        }else{
+            printf("El envio no existe\n");
+            printf("Presione ENTER para continuar");
+            getchar();
+        }
     }
 }
 
@@ -228,7 +235,6 @@ void mostrarEstructura(lista lso){
         printf("Presione ENTER para continuar");
         getchar();
     }else{
-        getchar();
         for(i=0;i<=lso.cant-1;i++){
             printf("\n---------------------------------------------------------------");
             printf("\nCodigo del envio: %s", lso.arr[i].codigo);
@@ -294,6 +300,7 @@ void modificarEnvio(lista *lso){
     char codigo[8];
     int exito,i;
     if((*lso).cant == 0){
+        fflush(stdin);
         printf("No hay envios en el registro \n");
         printf("Presione ENTER para continuar");
         getchar();
@@ -311,7 +318,8 @@ void modificarEnvio(lista *lso){
             printf("Presione ENTER para continuar");
             getchar();
         }else{
-            printf("El envio no pudo modificarse\n");
+            fflush(stdin);
+            printf("El envio no se encuentra en el registro\n");
             printf("Presione ENTER para continuar");
             getchar();
         }
