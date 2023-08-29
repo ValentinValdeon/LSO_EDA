@@ -107,10 +107,10 @@ void eliminarEnvioLSO(lista *lso){
         getchar();
     }else{
         while (otro == 1){
-            do {
+            //do{
                 printf("Ingrese el codigo del envio que desea eliminar \n");
                 scanf("%s",codigo);
-            }while(strlen(codigo)!= 7);
+            //}while(strlen(codigo)!= 7);
             for (i=0;i<=8 ; i++)
                 codigo[i] = toupper(codigo[i]);
             exito = bajaLSO(lso,codigo);
@@ -177,11 +177,11 @@ void cargarEnvio(lista *lso){
         printf("Presione ENTER para continuar");
         getchar();
     }else{
-        do {
+        //do{
             system("cls");
             printf("Ingrese el Codigo (7 caracteres):");
             scanf("%s",codigo);
-        }while(strlen(codigo)!= 7);
+        //}while(strlen(codigo)!= 7);
 
         for (i=0;i<=8 ; i++)
             codigo[i] = toupper(codigo[i]);

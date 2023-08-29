@@ -19,7 +19,7 @@
 1693011317 d:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\prueba\lso.h
 	"envios.h"
 
-1692891019 source:d:\educación\a.unsl\2do\segundo cuatrimentre\eda\tpmaquina\lso_eda\prueba\main.c
+1693231321 source:d:\educación\a.unsl\2do\segundo cuatrimentre\eda\tpmaquina\lso_eda\prueba\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -29,7 +29,7 @@
 
 1692799971 d:\educación\a.unsl\2do\segundo cuatrimentre\eda\tpmaquina\lso_eda\prueba\envios.h
 
-1692891118 d:\educación\a.unsl\2do\segundo cuatrimentre\eda\tpmaquina\lso_eda\prueba\lso.h
+1693234217 d:\educación\a.unsl\2do\segundo cuatrimentre\eda\tpmaquina\lso_eda\prueba\lso.h
 	"envios.h"
 
 1692657415 source:c:\users\valen\onedrive\escritorio\eda\lso-tp\lso_eda\prueba\main.c
@@ -56,5 +56,18 @@
 1692741527 j:\uni\eda\eda-2da cursada\pm-lso\lso_eda\prueba\envios.h
 
 1692835339 j:\uni\eda\eda-2da cursada\pm-lso\lso_eda\prueba\lso.h
+	"envios.h"
+
+1693231321 source:d:\prueba\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"string.h"
+	"envios.h"
+	"LSO.h"
+
+1692799971 d:\prueba\envios.h
+
+1693234217 d:\prueba\lso.h
 	"envios.h"
 

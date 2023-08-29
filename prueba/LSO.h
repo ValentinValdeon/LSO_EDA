@@ -1,7 +1,7 @@
 #ifndef LSO_H_INCLUDED
 #define LSO_H_INCLUDED
 #include "envios.h"
-#define MAX 300
+#define MAX 3
 typedef struct{
     int cant;
     envio arr[MAX];
@@ -9,20 +9,20 @@ typedef struct{
 void initLSO(lista *lso){
     int i;
     (*lso).cant=0;
-    for(i=0;i<=MAX;i++)
-        strcpy((*lso).arr[i].codigo,"z");
+    //for(i=0;i<=MAX;i++)
+        //strcpy((*lso).arr[i].codigo,"z");
 }
 
 
 int localizarLSO(char cod[],lista *lso,int *pos){
     int i=0;
-    while(i<=MAX && (strcmp((*lso).arr[i].codigo,cod)<0)){
+    while(i<(*lso).cant && (strcmp((*lso).arr[i].codigo,cod)<0)){
         i++;
     }
     (*pos)=i;
-    if ((strcmp((*lso).arr[i].codigo,cod)==0)){
+    if (i<(*lso).cant && (strcmp((*lso).arr[i].codigo,cod)==0)){
         return 1;
-    }else{
+    }else {
         return 0;
     }
 }
@@ -32,7 +32,7 @@ int altaLSO(lista *lso,envio env){
     exito = localizarLSO(env.codigo,lso,&pos);
     if(exito == 0){
             if((*lso).cant<MAX){
-                for(i=(*lso).cant;i>=pos;i--){
+                for(i=(*lso).cant-1;i>=pos;i--){
                     (*lso).arr[i+1]=(*lso).arr[i];
                 }
                 (*lso).arr[pos] = env;
@@ -66,10 +66,9 @@ int bajaLSO(lista *lso,char codigo[]){
             scanf("%d",&confirmar);
         }
         if(confirmar==1){
-                for(i=pos;i<(*lso).cant;i++){
-                    (*lso).arr[i]=(*lso).arr[i+1];
-                }
-                strcpy((*lso).arr[(*lso).cant].codigo,"z");
+            for(i=pos;i<(*lso).cant;i++){
+                (*lso).arr[i]=(*lso).arr[i+1];
+            }
             (*lso).cant--;
             return 1; //Baja exitosa
         }else{
