@@ -107,10 +107,10 @@ void eliminarEnvioLSO(lista *lso){
         getchar();
     }else{
         while (otro == 1){
-            //do{
+            do{
                 printf("Ingrese el codigo del envio que desea eliminar \n");
                 scanf("%s",codigo);
-            //}while(strlen(codigo)!= 7);
+            }while(strlen(codigo)!= 7);
             for (i=0;i<=8 ; i++)
                 codigo[i] = toupper(codigo[i]);
             exito = bajaLSO(lso,codigo);
@@ -138,7 +138,6 @@ void consultarEnvio(lista lso){
     if(lso.cant==0){
         printf("No hay envios en el registro \n");
         printf("Presione ENTER para continuar");
-        getchar();
     }else{
         do {
             printf("Ingrese el envio que desea consultar \n");
@@ -177,11 +176,11 @@ void cargarEnvio(lista *lso){
         printf("Presione ENTER para continuar");
         getchar();
     }else{
-        //do{
+        do{
             system("cls");
             printf("Ingrese el Codigo (7 caracteres):");
             scanf("%s",codigo);
-        //}while(strlen(codigo)!= 7);
+        }while(strlen(codigo)!= 7);
 
         for (i=0;i<=8 ; i++)
             codigo[i] = toupper(codigo[i]);
@@ -257,7 +256,7 @@ void mostrarEstructura(lista lso){
 void memorizacionPrevia(lista *lso){
     FILE *fp;
     envio env;
-    int cantPreCarga=0;
+    int cantPreCarga=0, i=0;
 
     if((fp = fopen("Envios.txt","r"))==NULL){
         printf("El archivo esta vacio\n");
@@ -267,6 +266,8 @@ void memorizacionPrevia(lista *lso){
         while (!(feof(fp)) && ((*lso).cant) < MAX)
         {
             fscanf(fp," %[^\n]s",env.codigo);
+            for (i=0;i<=8 ; i++)
+                env.codigo[i] = toupper(env.codigo[i]);
             fscanf(fp," %ld",&env.documentoRece);
             fscanf(fp," %[^\n]s",env.nomyapeRece);
             fscanf(fp," %[^\n]s",env.domicilioRece);

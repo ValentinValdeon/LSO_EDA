@@ -1,7 +1,7 @@
 #ifndef LSO_H_INCLUDED
 #define LSO_H_INCLUDED
 #include "envios.h"
-#define MAX 3
+#define MAX 300
 typedef struct{
     int cant;
     envio arr[MAX];
@@ -9,8 +9,6 @@ typedef struct{
 void initLSO(lista *lso){
     int i;
     (*lso).cant=0;
-    //for(i=0;i<=MAX;i++)
-        //strcpy((*lso).arr[i].codigo,"z");
 }
 
 
@@ -66,7 +64,7 @@ int bajaLSO(lista *lso,char codigo[]){
             scanf("%d",&confirmar);
         }
         if(confirmar==1){
-            for(i=pos;i<(*lso).cant;i++){
+            for(i=pos;i<(*lso).cant-1;i++){
                 (*lso).arr[i]=(*lso).arr[i+1];
             }
             (*lso).cant--;

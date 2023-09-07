@@ -6,7 +6,7 @@
 
 1692224645 d:\educacion\2do\segundo cuatrimentre\eda\labs\prueba\envios.h
 
-1693011279 source:d:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\prueba\main.c
+1693448863 source:d:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\prueba\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -16,7 +16,7 @@
 
 1692837275 d:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\prueba\envios.h
 
-1693011317 d:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\prueba\lso.h
+1693448925 d:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\prueba\lso.h
 	"envios.h"
 
 1693231321 source:d:\educación\a.unsl\2do\segundo cuatrimentre\eda\tpmaquina\lso_eda\prueba\main.c
@@ -69,5 +69,31 @@
 1692799971 d:\prueba\envios.h
 
 1693234217 d:\prueba\lso.h
+	"envios.h"
+
+1693448863 source:c:\users\maria\desktop\p1-grupo13\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"string.h"
+	"envios.h"
+	"LSO.h"
+
+1692837275 c:\users\maria\desktop\p1-grupo13\envios.h
+
+1693448925 c:\users\maria\desktop\p1-grupo13\lso.h
+	"envios.h"
+
+1694049188 source:e:\educacion\2do\segundo cuatrimentre\eda\labs\p1-grupo13\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"string.h"
+	"envios.h"
+	"LSO.h"
+
+1692837275 e:\educacion\2do\segundo cuatrimentre\eda\labs\p1-grupo13\envios.h
+
+1694049116 e:\educacion\2do\segundo cuatrimentre\eda\labs\p1-grupo13\lso.h
 	"envios.h"
 
