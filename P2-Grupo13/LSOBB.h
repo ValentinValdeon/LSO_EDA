@@ -1,6 +1,7 @@
 #ifndef LSOBB_H_INCLUDED
 #define LSOBB_H_INCLUDED
 #include "envios.h"
+#include "math.h"
 #define MAX 300
 typedef struct{
     int cant;
@@ -12,15 +13,26 @@ void initLSOBB(listabb *lsobb){
 }
 
 
-int localizarLSOBB(char cod[],listabb *lsobb,int *pos){ //CAMBIAR
-    int i=0;
-    while(i<(*lsobb).cant && (strcmp((*lsobb).arr[i].codigo,cod)<0)){
-        i++;
+int localizarLSOBB(char cod[],listabb *lsobb,int *pos){
+    float li = -1, ls = (*lsobb).cant-1;
+    int testigo;
+    while(li<ls){
+        testigo = ceil((li+ls)/2);
+        if((strcmp((*lsobb).arr[testigo].codigo,cod)<0)){
+            li = testigo;
+        }else{
+            ls = testigo-1;
+        }
     }
-    (*pos)=i;
-    if (i<(*lsobb).cant && (strcmp((*lsobb).arr[i].codigo,cod)==0)){
+    if (strcmp((*lsobb).arr[(int)li + 1].codigo,cod)==0){
+        (*pos)=ls;
         return 1;
-    }else {
+    }else{
+        if (ls == (*lsobb).cant-1 && strcmp((*lsobb).arr[(int)ls].codigo,cod)>0){
+            (*pos)=ls;
+        }else{
+            (*pos)=ls + 1;
+        }
         return 0;
     }
 }
@@ -35,6 +47,7 @@ int altaLSOBB(listabb *lsobb,envio env){
                 }
                 (*lsobb).arr[pos] = env;
                 (*lsobb).cant++;
+                //printf("%d \n",(*lsobb).cant);
                 return 1;//exito alta
             }else{
                 return 2;//Si esta llena

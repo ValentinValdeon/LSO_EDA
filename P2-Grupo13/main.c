@@ -14,9 +14,10 @@
 void mostrarEstructura(lista lso);
 void mostrarEstructuraLSOBB(listabb lsobb);
 void memorizacionPrevia(lista *lso);
+void memorizacionPreviaLSOBB(listabb *lsobb);
 
 int main(){
-    int opcMenuLista,opcMenuOp;
+    int opcMenuOp;
     lista lso;
     listabb lsobb;
     arbol arbolito;
@@ -24,29 +25,17 @@ int main(){
     initLSOBB(&lsobb);
     initABB(&arbolito);
     envio env;
+    //memorizacionPrevia(&lso);
+    memorizacionPreviaLSOBB(&lsobb);
     do{
-        system("cls");
-        printf("--------------Bienvenido al sistema de ""El Revoleo""-------------- \n\n");
-        printf("Seleccione la opcion \n\n");
-        printf("--------------------------------------------------------------- \n");
-        printf("<1> Lista Secuencial Ordenada con examinacion secuencial(LSO) \n");
-        printf("<2> Lista Secuencial Ordenada con busqueda binaria(LSOBB) \n");
-        printf("<3> Arbol Binario de Busqueda(ABB) \n");
-        printf("<4> Salir del menu\n");
-        printf("--------------------------------------------------------------- \n");
-        printf("Ingrese una opcion\n");
-        scanf("%d",&opcMenuLista);
-        if(opcMenuLista<2){
-            do{
                 system("cls");
-                memorizacionPrevia(&lso);
                 printf("Seleccione la operacion a realizar\n");
                 printf("--------------------------------------------------------------- \n");
                 printf("<1> Comparacion de estructuras\n");
                 printf("<2> Mostrar todos los envios (LSO)\n");
-                printf("<3> Mostrar todos los envios (LSOBB)");
+                printf("<3> Mostrar todos los envios (LSOBB)\n");
                 printf("<4> Mostrar todos los envios (ABB)\n");
-                printf("<5> Volver al menu de estructuras\n");
+                printf("<5> Salir\n");
                 printf("--------------------------------------------------------------- \n");
                 printf("Ingrese una opcion\n");
                 scanf("%d",&opcMenuOp);
@@ -64,6 +53,7 @@ int main(){
                     case 3:
                         system("cls");
                         mostrarEstructuraLSOBB(lsobb);
+                        getchar();
                         break;
                     case 4:
                         system("cls");
@@ -72,26 +62,16 @@ int main(){
                         break;
                     case 5:
                         system("cls");
-                        opcMenuLista==0;
-                        break;
+                        printf("Gracias por utilizar nuestro sistema");
+                        exit(1);
                     default:
                         system("cls");
                         printf("-------------------Opcion Incorrecta--------------------\n");
                         printf("------Presione cualquier tecla para volver al menu------");
                         getchar();
                         break;
-                }
-            }while(opcMenuOp !=5);
-        }else if (opcMenuLista == 2){
-            system("cls");
-            printf("Gracias por utilizar nuestro sistema");
-        }else{
-            system("cls");
-            printf("-------------------Opcion Incorrecta--------------------\n");
-            printf("------Presione cualquier tecla para volver al menu------");
-            getchar();
-        }
-    }while(opcMenuLista !=4);
+            }
+    }while(opcMenuOp !=5);
     return 0;
 }
 

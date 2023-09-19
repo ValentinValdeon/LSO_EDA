@@ -97,7 +97,7 @@
 1694474202 e:\educacion\2do\segundo cuatrimentre\eda\labs\p1-grupo13\lso.h
 	"envios.h"
 
-1694477232 source:e:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\p2-grupo13\main.c
+1695084176 source:e:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\p2-grupo13\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -112,10 +112,36 @@
 1694474202 e:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\p2-grupo13\lso.h
 	"envios.h"
 
-1694476984 e:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\p2-grupo13\lsobb.h
+1695084293 e:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\p2-grupo13\lsobb.h
 	"envios.h"
+	"math.h"
 
 1694477261 e:\educacion\2do\segundo cuatrimentre\eda\labs\lso_eda\p2-grupo13\abb.h
+	<string.h>
+	<conio.h>
+	"envios.h"
+	<malloc.h>
+
+1695085674 source:c:\users\maria\desktop\p2-grupo13\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"string.h"
+	"envios.h"
+	"LSO.h"
+	"LSOBB.h"
+	"ABB.h"
+
+1692837275 c:\users\maria\desktop\p2-grupo13\envios.h
+
+1694474202 c:\users\maria\desktop\p2-grupo13\lso.h
+	"envios.h"
+
+1695089329 c:\users\maria\desktop\p2-grupo13\lsobb.h
+	"envios.h"
+	"math.h"
+
+1694477261 c:\users\maria\desktop\p2-grupo13\abb.h
 	<string.h>
 	<conio.h>
 	"envios.h"
